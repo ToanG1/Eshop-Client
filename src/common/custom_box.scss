@@ -1,0 +1,9 @@
+@use "./color.scss" as color;
+
+@mixin inputBox($theme: color.$gray-input-color) {
+  width: 100%;
+  height: 50px;
+  border: 1px solid color.$gray-color;
+  border-radius: 5px;
+  background-color: $theme;
+}
