@@ -12,24 +12,24 @@ import {
 function Nav() {
   return (
     <>
-      <section className="Nav-home">
+      <section className="Navigation-home">
         <div>
           <img id="logo" src={logo} alt="logo" />
         </div>
         <div id="navigation">
-          <Link className="nav-link" to="">
+          <Link className="nav-link" id="nav-home" to="/">
             Home
           </Link>
-          <Link className="nav-link" to="">
+          <Link className="nav-link" id="nav-explore" to="/explore">
             Explore
           </Link>
-          <Link className="nav-link" to="">
+          <Link className="nav-link" id="nav-blogs" to="">
             Blogs
           </Link>
-          <Link className="nav-link" to="">
+          <Link className="nav-link" id="nav-about" to="">
             About
           </Link>
-          <Link className="nav-link" to="">
+          <Link className="nav-link" id="nav-contact" to="">
             Contact
           </Link>
         </div>

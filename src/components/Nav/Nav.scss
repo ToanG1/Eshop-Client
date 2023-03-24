@@ -1,7 +1,7 @@
 @use "../../common/color.scss" as color;
 @use "../../common/custom_box.scss" as custom_box;
 
-.Nav-home {
+.Navigation-home {
   width: 100%;
   height: 100px;
   display: flex;
@@ -27,6 +27,9 @@
     .nav-link {
       font-size: 20px;
       color: color.$gray-color;
+    }
+    .nav-link:hover {
+      color: color.$primary-color;
     }
     .nav-link:active {
       color: color.$primary-color;
@@ -68,4 +71,7 @@
       padding-right: 10px;
     }
   }
+}
+.active {
+  color: color.$primary-color !important;
 }

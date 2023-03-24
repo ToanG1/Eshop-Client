@@ -63,7 +63,6 @@ html {
       }
       input {
         @include custom_box.buttonBox();
-        padding-inline-start: 20px;
         width: calc(100% - 20px);
       }
       #switch-remember {

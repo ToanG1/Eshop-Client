@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import ReactDOM from "react-dom";
 import style from "./Home.scss";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -37,6 +38,11 @@ function Home() {
     //   },
     // ],
   };
+  useEffect(() => {
+    const current_nav_item = document.getElementById("nav-home");
+    current_nav_item.classList.add("active");
+  });
+
   return (
     <>
       <Nav />

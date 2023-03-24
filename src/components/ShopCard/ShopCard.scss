@@ -1,0 +1,33 @@
+@use "../../common/color.scss" as color;
+@use "../../common/custom_box.scss" as custom_box;
+
+.shop-card-home {
+  width: 160px;
+  height: 240px;
+  background-color: color.$light-gray-color;
+  border-radius: 5px;
+  .shop-card-container {
+    position: relative;
+    .shop-cover-img {
+      width: 100%;
+      height: 160px;
+      border-radius: 5px 5px 0 0;
+    }
+    .shop-avatar-img {
+      width: 80px;
+      height: 80px;
+      border-radius: 10px;
+      border: 1px solid color.$black-color;
+      position: absolute;
+      bottom: 30px;
+      right: 40px;
+    }
+    p {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding-top: 50px;
+      color: color.$black-color;
+    }
+  }
+}

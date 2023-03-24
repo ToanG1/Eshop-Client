@@ -9,9 +9,17 @@
   width: 100%;
   height: 50px;
   border: 1px solid color.$gray-color;
-  color: color.$white-color;
+  @if $theme == color.$white-color {
+    color: color.$black-color;
+  }
+  @if $theme == color.$black-color {
+    color: color.$white-color;
+  }
   border-radius: 5px;
   background-color: $theme;
+  padding-inline-start: 12px;
+  padding-inline-end: 12px;
+  outline: none;
 }
 
 @mixin roundedButtonBox(
