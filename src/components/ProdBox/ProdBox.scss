@@ -1,0 +1,85 @@
+@use "../../common/color.scss" as color;
+@use "../../common/custom_box.scss" as custom_box;
+.prod-box-container {
+  width: 220px;
+  height: 420px;
+  .prod-img-box {
+    width: 100%;
+    height: 310px;
+    position: relative;
+    img {
+      width: 100%;
+      height: 310px;
+      border-radius: 5px 5px 0 0;
+    }
+    .prod-btn {
+      width: calc(100% - 20px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: absolute;
+      bottom: 8px;
+      padding: 0 8px;
+      font-size: 14px;
+      .rating-icon {
+        color: color.$yellow-color;
+      }
+      .favo-icon {
+        color: color.$primary-color;
+        font-size: 18px;
+      }
+      .favo-icon:active {
+        background-color: color.$primary-color;
+        color: color.$primary-color;
+      }
+      .prod-rating {
+        width: 48px;
+        height: 24px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background-color: color.$white-neutral;
+        border-radius: 5px;
+      }
+    }
+  }
+  .prod-info {
+    & > * {
+      padding: 2px 0;
+    }
+    .name-box {
+      .prod-name {
+        font-size: 14px;
+        font-family: poppins;
+        font-weight: 600;
+        padding: 2px 0;
+      }
+      .prod-store {
+        font-size: 12px;
+        font-family: poppins;
+        font-weight: 400;
+        color: color.$gray-color;
+      }
+    }
+
+    .price-box {
+      display: flex;
+      align-items: center;
+      padding-bottom: 5px;
+      .prod-price {
+        font-size: 12px;
+        color: color.$gray-color;
+        text-decoration: line-through;
+      }
+      .prod-desc-price {
+        font-size: 14px;
+        color: color.$primary-color;
+        margin-left: 8px;
+      }
+    }
+  }
+  button {
+    @include custom_box.buttonBox($theme: color.$black-color);
+    height: 40px;
+  }
+}

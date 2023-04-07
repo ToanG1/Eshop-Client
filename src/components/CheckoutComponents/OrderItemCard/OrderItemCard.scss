@@ -1,0 +1,69 @@
+@use "../../../common/color.scss" as color;
+
+.order-item-card-home {
+  width: calc(100% - 40px);
+  height: 220px;
+  display: flex;
+  border: 1px solid color.$light-gray-color;
+  border-radius: 10px;
+  margin: 20px;
+  img {
+    width: 30%;
+    height: calc(100% - 40px);
+    padding: 20px;
+  }
+  .order-item-card-content {
+    width: 70%;
+    height: calc(100% - 40px);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    h1 {
+      font-size: 1.2rem;
+    }
+    p {
+      color: color.$gray-color;
+    }
+    .qty-btn {
+      width: 60%;
+      display: flex;
+      justify-content: space-between;
+      p {
+        width: fit-content;
+        height: fit-content;
+        color: color.$black-color;
+        font-weight: 700;
+        font-size: 18px;
+        padding: 5px 10px;
+        background-color: color.$light-gray-color;
+        border-radius: 5px;
+      }
+    }
+    .price-btn {
+      display: flex;
+      & > * {
+        margin-right: 10px;
+      }
+      p:first-child {
+        color: color.$gray-color;
+        text-decoration: line-through;
+      }
+      p:last-child {
+        color: color.$primary-color;
+      }
+    }
+    .footer {
+      display: flex;
+      i {
+        color: color.$green-color;
+        padding-right: 20px;
+      }
+    }
+    .delete-btn {
+      position: absolute;
+      right: 20px;
+    }
+  }
+}

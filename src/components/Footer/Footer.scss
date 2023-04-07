@@ -1,0 +1,96 @@
+@use "../../common/color.scss" as color;
+@use "../../common/custom_box.scss" as custom_box;
+
+.footer-home {
+  height: 300px;
+  display: flex;
+  margin-top: 50px;
+  padding: 50px;
+  padding-bottom: 20px;
+  background-color: color.$white-neutral;
+  border-radius: 30px 30px 0 0;
+  border-top: 1px solid color.$light-gray-color;
+  .left-container {
+    width: 50%;
+    display: flex;
+    .cate-column {
+      width: calc(100% / 3);
+      & > div {
+        padding: 5px 0;
+      }
+    }
+    .help-column {
+      width: calc(100% / 3);
+      & > div {
+        padding: 5px 0;
+      }
+    }
+    .more-column {
+      width: calc(100% / 3);
+      & > div {
+        padding: 5px 0;
+      }
+    }
+    .link {
+      color: color.$black-color;
+    }
+  }
+  .right-container {
+    width: 50%;
+    position: relative;
+    .register-promo {
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+      p {
+        color: color.$black-color;
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 12px;
+        margin-right: 5px;
+      }
+      ::placeholder {
+        color: color.$gray-color;
+        font-weight: 700;
+      }
+      input {
+        @include custom_box.roundedButtonBox(
+          $theme: color.$white-color,
+          $width-size: 300px,
+          $height-size: 40px
+        );
+        padding-inline-start: 12px;
+        border-color: color.$black-color;
+        color: color.$black-color;
+        margin-right: 10px;
+      }
+      input:focus {
+        outline: none;
+      }
+      button {
+        @include custom_box.roundedButtonBox(
+          $theme: color.$orange-color,
+          $width-size: 120px,
+          $height-size: 40px
+        );
+        border: 0;
+        color: color.$white-color;
+        font-weight: 700;
+      }
+    }
+    .social-media-logo {
+      display: flex;
+      justify-content: end;
+      padding: 20px 5px;
+      & > * {
+        margin-left: 20px;
+        font-size: 20px;
+      }
+    }
+    #com {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+  }
+}

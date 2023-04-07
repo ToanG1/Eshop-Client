@@ -1,7 +1,12 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
+import Explore from "./pages/Explore/Explore";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
+import Products from "./pages/Products/Products";
+import ProductInfo from "./pages/ProductInfo/ProductInfo";
+import Checkout from "./pages/Checkout/Checkout";
+
 function App() {
   return (
     <>
@@ -10,6 +15,10 @@ function App() {
           <Route path={"/"} element={<Home />} />
           <Route path={"login"} element={<Login />} />
           <Route path={"register"} element={<Register />} />
+          <Route path={"explore"} element={<Explore />} />
+          <Route path={"/:category"} element={<Products />} />
+          <Route path={"explore/:id"} element={<ProductInfo />} />
+          <Route path="checkout" element={<Checkout />} />
         </Routes>
       </BrowserRouter>
     </>

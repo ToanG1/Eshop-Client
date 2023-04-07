@@ -1,0 +1,87 @@
+@use "../../../common/color.scss" as color;
+@use "../../../common/custom_box.scss" as custom_box;
+
+.address-home {
+  display: flex;
+  .left-box {
+    width: 50%;
+
+    .title {
+      display: flex;
+      align-items: center;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      & > * {
+        margin-right: 20px;
+      }
+      .add-address-btn {
+        color: color.$primary-color;
+        margin-left: 10px;
+      }
+      span {
+        color: color.$primary-color;
+        font-size: 18px;
+        text-transform: none;
+      }
+    }
+    .address-cards-list {
+      width: fit-content;
+      height: 430px;
+      overflow-y: scroll;
+      margin: 20px;
+      margin-right: 10%;
+    }
+  }
+  .v-ruler {
+    width: 2px;
+    background-color: color.$light-gray-color;
+  }
+  .right-box {
+    width: calc(50% - 2px);
+    margin: 20px;
+    margin-left: 5%;
+    .price-detail-container {
+      height: 60%;
+      h2 {
+        text-transform: uppercase;
+      }
+      #table-container {
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 20px 0;
+        .row {
+          display: flex;
+          justify-content: space-between;
+          p:first-child {
+            color: color.$gray-color;
+          }
+        }
+        .discount {
+          color: color.$green-color;
+        }
+      }
+      .h-ruler {
+        height: 2px;
+        background-color: color.$light-gray-color;
+        margin: 10px 0;
+      }
+      .total-price {
+        display: flex;
+        justify-content: space-between;
+        margin: 20px 0;
+        p:last-child {
+          color: color.$primary-color;
+        }
+      }
+      .place-order-btn {
+        font-size: 18px !important;
+        @include custom_box.buttonBox($theme: color.$black-color);
+        i {
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+}

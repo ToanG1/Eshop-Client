@@ -1,0 +1,144 @@
+@use "../../common/color.scss" as color;
+
+@mixin cateBox() {
+  width: 140px;
+  height: 40px;
+  background-color: color.$white-color;
+  border-radius: 4px;
+  color: color.$black-color;
+  border: 0;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 600;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+.explorepage-home {
+  h2 {
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    & > * {
+      padding-left: 10px;
+    }
+  }
+  .cate-container {
+    height: 650px;
+    margin: 50px;
+    margin-top: 150px;
+    text-transform: uppercase;
+
+    .categories {
+      width: 100%;
+      height: calc(100% - 90px);
+      display: flex;
+      justify-content: space-between;
+      .cate-name {
+        @include cateBox();
+      }
+      #first-block {
+        width: 28%;
+        height: 100%;
+        background-image: url("../../images/cate-graphic 1.png");
+        background-size: cover;
+        border-radius: 5px;
+        position: relative;
+      }
+      #second-block {
+        width: 28%;
+        height: 100%;
+        background-image: url("../../images/cate-graphic 2.png");
+        background-size: cover;
+        border-radius: 5px;
+        position: relative;
+      }
+      #third-block {
+        width: 38%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        #top-block {
+          height: 46.5%;
+          display: flex;
+          justify-content: space-between;
+          div:first-child {
+            width: 46%;
+            background-image: url("../../images/cate-graphic 3.png");
+            background-size: cover;
+            border-radius: 5px;
+            position: relative;
+          }
+          div:last-child {
+            width: 46%;
+            background-image: url("../../images/cate-graphic 4.png");
+            background-size: cover;
+            border-radius: 5px;
+
+            position: relative;
+          }
+        }
+        #bottom-block {
+          height: 46.5%;
+          display: flex;
+          justify-content: space-between;
+          div:first-child {
+            width: 46%;
+            background-image: url("../../images/cate-graphic 5.png");
+            background-size: cover;
+            border-radius: 5px;
+
+            position: relative;
+            button {
+              top: 10px;
+              bottom: unset !important;
+            }
+          }
+          div:last-child {
+            width: 46%;
+            background-image: url("../../images/cate-graphic 6.png");
+            background-size: cover;
+            border-radius: 5px;
+
+            position: relative;
+            button {
+              top: 10px;
+              bottom: unset !important;
+            }
+          }
+        }
+      }
+    }
+  }
+  .shop-container {
+    height: fit-content;
+    margin: 50px;
+    text-transform: uppercase;
+  }
+  .prod-container {
+    height: fit-content;
+    margin: 50px;
+    .prod-cards {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      row-gap: 25px;
+    }
+    @media (max-width: 1250px) {
+      .prod-cards {
+        grid-template-columns: repeat(5, 1fr);
+      }
+    }
+    @media (max-width: 950px) {
+      .prod-cards {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    @media (max-width: 590px) {
+      .prod-cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  }
+}

@@ -3,12 +3,13 @@ import style from "./Register.scss";
 import { Link } from "react-router-dom";
 
 import login_img from "../../images/login_img.png";
-
+import logo from "../../images/logo.png";
 function Login() {
   return (
     <>
       <div className="home">
         <div id="left-section">
+          <img id="logo" src={logo} alt="logo" />
           <img id="login-img" src={login_img} alt="imagefor login" />
         </div>
         <div id="register-section">
@@ -39,12 +40,11 @@ function Login() {
                   placeholder="Re-enter passsword"
                 />
                 <div id="buttonP">
-                  <switch>
-                    <label>
-                      <input id="switch-remember" type="checkbox" /> I accept
-                      the Terms of Service and Privacy Policy
-                    </label>
-                  </switch>
+                  <label class="switch">
+                    <input type="checkbox" />
+                    <span class="slider round"></span>
+                  </label>
+                  <p>I accept the Terms of Service and Privacy Policy</p>
                 </div>
                 <div id="register-btn">
                   <button type="submit" className="btn btn-primary">

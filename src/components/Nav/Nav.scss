@@ -1,0 +1,77 @@
+@use "../../common/color.scss" as color;
+@use "../../common/custom_box.scss" as custom_box;
+
+.Navigation-home {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  background-color: color.$white-color;
+  border-radius: 0 0 30px 30px;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid color.$light-gray-color;
+  #logo {
+    @include custom_box.logoBox($size: 60px);
+    padding-left: 30px;
+  }
+  #navigation {
+    width: 25%;
+    margin-left: calc(10% - 80px);
+    display: flex;
+    justify-content: space-between;
+    padding-left: 27%;
+    padding-right: 12%;
+    .nav-link {
+      font-size: 20px;
+      color: color.$gray-color;
+    }
+    .nav-link:hover {
+      color: color.$primary-color;
+    }
+    .nav-link:active {
+      color: color.$primary-color;
+    }
+  }
+  #user {
+    & > * {
+      color: color.$primary-color;
+      padding-right: 5px;
+    }
+    width: 10%;
+    display: flex;
+  }
+  #search {
+    width: 5%;
+    text-align: center;
+    & > * {
+      color: color.$primary-color;
+      padding-right: 10px;
+    }
+  }
+  #cart {
+    width: 5%;
+    text-align: center;
+
+    display: flex;
+    & > * {
+      color: color.$primary-color;
+      padding-right: 10px;
+    }
+  }
+  #favo {
+    width: 5%;
+    text-align: center;
+
+    display: flex;
+    & > * {
+      color: color.$primary-color;
+      padding-right: 10px;
+    }
+  }
+}
+.active {
+  color: color.$primary-color !important;
+}

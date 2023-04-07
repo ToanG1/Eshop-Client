@@ -2,12 +2,14 @@ import React, { useSate } from "react";
 import style from "./Login.scss";
 import { Link } from "react-router-dom";
 import login_img from "../../images/login_img.png";
+import logo from "../../images/logo.png";
 
 function Login() {
   return (
     <>
       <div className="home">
         <div id="left-section">
+          <img id="logo" src={logo} alt="logo" />
           <img id="login-img" src={login_img} alt="imagefor login" />
         </div>
         <div id="login-section">
@@ -29,11 +31,11 @@ function Login() {
                   placeholder="Enter passsword"
                 />
                 <div id="buttonP">
-                  <switch>
-                    <label>
-                      <input id="switch-remember" type="checkbox" /> Remember me
-                    </label>
-                  </switch>
+                  <label class="switch">
+                    <input type="checkbox" />
+                    <span class="slider round"></span>
+                  </label>
+                  <p>Remember me</p>
                   <a>Forgot password?</a>
                 </div>
                 <div id="login-btn">

@@ -1,0 +1,18 @@
+@use "../../common/color.scss" as color;
+@use "../../common/custom_box.scss" as custom_box;
+
+.styles-list {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: auto;
+  row-gap: 10px;
+  column-gap: 10px;
+  .style-box {
+    width: fit-content !important;
+    height: 30px !important;
+    display: flex;
+    align-items: center;
+    color: color.$white-color;
+    @include custom_box.miniBox($theme: color.$orange-color);
+  }
+}
