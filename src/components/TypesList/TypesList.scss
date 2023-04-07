@@ -1,0 +1,23 @@
+@use "../../common/color.scss" as color;
+@use "../../common/custom_box.scss" as custom_box;
+
+.types-list {
+  h2 {
+    margin-bottom: 20px;
+  }
+  .types {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: auto;
+    row-gap: 10px;
+    column-gap: 10px;
+    .type-box {
+      width: fit-content !important;
+      height: fit-content !important;
+      font-size: 20px;
+      padding: 5px 20px !important;
+      color: color.$primary-color;
+      @include custom_box.buttonBox($theme: color.$black-color);
+    }
+  }
+}

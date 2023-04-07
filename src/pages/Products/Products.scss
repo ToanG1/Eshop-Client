@@ -1,0 +1,57 @@
+@use "../../common/color.scss" as color;
+@use "../../common/custom_box.scss" as custom_box;
+
+.products-by-cate {
+  height: fit-content;
+  margin: 50px;
+  margin-top: 150px;
+  .top-container {
+    display: flex;
+    justify-content: space-between;
+    color: color.$primary-color;
+    margin-bottom: 40px;
+    .cate-name {
+      width: 20%;
+      display: flex;
+      align-items: center;
+      & > * {
+        padding-right: 10px;
+      }
+      h2 {
+        color: color.$black-color;
+        text-transform: uppercase;
+        & > * {
+          padding-left: 10px;
+        }
+      }
+    }
+    .filter-btn {
+      width: fit-content;
+      margin-right: 10px;
+      color: color.$primary-color;
+      & > * {
+        padding-right: 10px;
+      }
+    }
+  }
+  .prod-cards {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    row-gap: 25px;
+  }
+  @media (max-width: 1250px) {
+    .prod-cards {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+  @media (max-width: 950px) {
+    .prod-cards {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  @media (max-width: 590px) {
+    .prod-cards {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}

@@ -22,6 +22,15 @@
   outline: none;
 }
 
+@mixin miniBox($theme: color.$gray-input-color) {
+  border: 0;
+  border-radius: 5px;
+  background-color: $theme;
+  padding-inline-start: 12px;
+  padding-inline-end: 12px;
+  outline: none;
+}
+
 @mixin roundedButtonBox(
   $theme: color.$gray-input-color,
   $width-size: 60px,

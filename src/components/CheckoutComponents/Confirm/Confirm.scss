@@ -1,0 +1,43 @@
+@use "../../../common/color.scss" as color;
+@use "../../../common/custom_box.scss" as custom_box;
+
+.confirm-home {
+  width: fit-content;
+  margin: 0 auto;
+  .confirm-container {
+    text-align: center;
+    & > * {
+      margin-bottom: 40px;
+    }
+    div > * {
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: 3rem;
+      color: color.$primary-color;
+      text-transform: uppercase;
+    }
+    h2:first-child {
+      text-transform: uppercase;
+    }
+
+    img {
+      width: auto;
+      height: auto;
+      max-width: 337px;
+      max-height: 156px;
+    }
+    .place-order-btn {
+      font-size: 18px !important;
+      height: 40px !important;
+      padding: 0 100px !important;
+      @include custom_box.buttonBox($theme: color.$black-color);
+      i {
+        margin-left: 10px;
+      }
+      a {
+        color: color.$white-color;
+      }
+    }
+  }
+}

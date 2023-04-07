@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import style from "./Explore.scss";
+import { Link } from "react-router-dom";
 import Nav from "../../components/Nav/Nav";
 import Footer from "../../components/Footer/Footer";
 import "slick-carousel/slick/slick.css";
@@ -34,10 +35,9 @@ function Explore() {
             <FontAwesomeIcon icon={faCaretRight} />
           </h2>
           <div className="categories">
-            <div id="first-block">
+            <Link to="/all" id="first-block">
               <button className="cate-name">CateName</button>
-            </div>
-
+            </Link>
             <div id="second-block">
               <button className="cate-name">CateName</button>
             </div>
@@ -73,11 +73,11 @@ function Explore() {
         </div>
         <div className="prod-container">
           <h2>
-            Recommended Shops <FontAwesomeIcon icon={faCaretRight} />
+            Recommended Products <FontAwesomeIcon icon={faCaretRight} />
           </h2>
           <div className="prod-cards">
             {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item) => (
-              <MiniProdCard />
+              <MiniProdCard id={item} />
             ))}
           </div>
         </div>

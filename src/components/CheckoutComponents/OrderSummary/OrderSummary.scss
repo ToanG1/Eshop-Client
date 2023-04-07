@@ -1,0 +1,130 @@
+@use "../../../common/color.scss" as color;
+@use "../../../common/custom_box.scss" as custom_box;
+
+.order-summary-home {
+  display: flex;
+  .left-box {
+    width: 50%;
+
+    .title {
+      display: flex;
+      align-items: center;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      & > * {
+        margin-right: 20px;
+      }
+      span {
+        color: color.$primary-color;
+        font-size: 18px;
+        text-transform: none;
+      }
+    }
+    .order-items {
+      width: fit-content;
+      height: 530px;
+      overflow-y: scroll;
+      margin: 20px;
+      margin-right: 10%;
+    }
+  }
+  .v-ruler {
+    width: 2px;
+    background-color: color.$light-gray-color;
+  }
+  .right-box {
+    width: calc(50% - 2px);
+    margin: 20px;
+    margin-left: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .notification {
+      height: 10%;
+      background-color: color.$light-gray-color;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      i {
+        margin-right: 20px;
+        color: color.$orange-color;
+      }
+    }
+    .voucher-container {
+      height: 15%;
+      h2 {
+        margin-bottom: 10px;
+      }
+      .voucher-code {
+        width: 100%;
+        height: 40px;
+        background-color: color.$white-neutral;
+        border-radius: 5px;
+        border: 1px solid color.$light-gray-color;
+        display: flex;
+        align-items: center;
+        position: relative;
+        input {
+          width: 86%;
+          padding-inline-start: 14px;
+          outline: none;
+          background-color: transparent;
+          border: none;
+          font-size: 14px;
+        }
+        button {
+          position: absolute;
+          right: 15px;
+          color: color.$primary-color;
+          font-size: 15px;
+          border: none;
+          background-color: transparent;
+        }
+      }
+    }
+    .price-detail-container {
+      height: 60%;
+      h2 {
+        text-transform: uppercase;
+      }
+      #table-container {
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 20px 0;
+        .row {
+          display: flex;
+          justify-content: space-between;
+          p:first-child {
+            color: color.$gray-color;
+          }
+        }
+        .discount {
+          color: color.$green-color;
+        }
+      }
+      .h-ruler {
+        height: 2px;
+        background-color: color.$light-gray-color;
+        margin: 10px 0;
+      }
+      .total-price {
+        display: flex;
+        justify-content: space-between;
+        margin: 20px 0;
+        p:last-child {
+          color: color.$primary-color;
+        }
+      }
+      .place-order-btn {
+        font-size: 18px !important;
+        @include custom_box.buttonBox($theme: color.$black-color);
+        i {
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+}

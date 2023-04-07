@@ -1,0 +1,51 @@
+@use "../../../common/color.scss" as color;
+
+.address-card-home {
+  width: calc(100% - 52px);
+  height: 100px;
+  margin: 20px 0;
+  padding: 20px;
+  background-color: color.$white-neutral;
+  border: 1px solid color.$light-gray-color;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  input {
+    width: 10%;
+    height: inherit;
+    display: flex;
+    align-items: center;
+  }
+  .address-info-container {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    .header {
+      display: flex;
+      p {
+        height: 14px;
+        margin-left: 10px;
+        padding: 2px 5px;
+        font-size: 14px;
+        color: color.$orange-color;
+        border: 0.5px solid color.$orange-color;
+        border-radius: 4px;
+      }
+    }
+    .phone {
+      display: flex;
+      p:first-child {
+        margin-right: 20px;
+      }
+    }
+    .address-btn {
+      position: absolute;
+      right: 0;
+      & > * {
+        padding-left: 15px;
+      }
+    }
+  }
+}
