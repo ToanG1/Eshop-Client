@@ -13,11 +13,14 @@
     .product-img-slider {
       width: 48%;
       height: 100%;
+      display: block;
+      overflow-y: hidden;
       .slick-slide {
-        width: 604px;
+        width: 595px;
         height: 600px;
         display: flex;
         align-items: center;
+        box-sizing: border-box;
       }
       .slick-next::before,
       .slick-prev::before {

@@ -25,11 +25,8 @@ function ProductInfo() {
     infinite: true,
     autoplay: true,
     speed: 2000,
-    arrows: true,
     slidesToShow: 1,
     slidesToScroll: 1,
-    variableWidth: true,
-    variableHeight: true,
   };
   let settings4relatedPod = {
     infinite: true,

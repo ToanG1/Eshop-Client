@@ -1,0 +1,37 @@
+@use "../../common/color.scss" as color;
+@use "../../common/custom_box.scss" as custom_box;
+
+.voucher-home {
+  height: 80px;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  background-color: color.$light-background-color;
+  border: 0.5px solid color.$primary-color;
+  border-radius: 5px;
+  margin: 20px;
+  padding: 10px 20px;
+  .left-box {
+    width: 230px;
+    font-size: 14px;
+    p {
+    }
+    p:first-child {
+      font-size: 18px;
+    }
+    p:last-child {
+      color: color.$gray-color;
+    }
+  }
+  .right-box {
+    width: 60px;
+    button {
+      width: 60px;
+      height: 30px;
+      border: none;
+      color: color.$white-color;
+      border-radius: 5px;
+      background-color: color.$primary-color;
+    }
+  }
+}
