@@ -9,7 +9,11 @@ import {
   faCartShopping,
 } from "@fortawesome/free-solid-svg-icons";
 
+import { getUser, login, logout } from "../../api/auth";
+
 function Nav() {
+  const jwt = localStorage.getItem("USER_INFO");
+  console.log(jwt);
   return (
     <>
       <section className="Navigation-home">
@@ -39,9 +43,9 @@ function Nav() {
             style={{ paddingRight: "10px" }}
             size="lg"
           />
-          <Link to="/login">Login</Link>
+          <button onClick={login}>Login</button>
           <p>/</p>
-          <Link to="/register">Register</Link>
+          <button onClick={logout}>Register</button>
         </div>
         <div id="search">
           <Link>

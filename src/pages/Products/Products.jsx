@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import style from "./Products.scss";
 import { useParams } from "react-router-dom";
 import Nav from "../../components/Nav/Nav";
@@ -7,9 +7,20 @@ import MiniProdCard from "../../components/MiniProdCard/MiniProdCard";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilter, faCircle } from "@fortawesome/free-solid-svg-icons";
+
+import { listProduct } from "../../api/user/Product";
+
 function Products() {
   const { category } = useParams();
-
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await listProduct();
+      setProducts(data);
+    };
+    fetchData();
+  }, []);
+  console.log(products);
   return (
     <>
       <Nav />
