@@ -15,7 +15,7 @@ function Products() {
   const [products, setProducts] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      const data = await listProduct();
+      let data = await listProduct();
       setProducts(data);
     };
     fetchData();
