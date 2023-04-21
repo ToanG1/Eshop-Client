@@ -10,7 +10,7 @@
   }
   .comments-box {
     width: calc(100% - 20px);
-    height: calc(100% - 75px);
+    height: calc(100% - 30px);
     padding: 10px;
     border-radius: 10px;
     .comments-list {
@@ -32,25 +32,6 @@
         .comment-content {
           font-size: 18px;
         }
-      }
-    }
-    .comment-form {
-      margin-top: 10px;
-      width: calc(100% - 16px);
-      height: 40px;
-      background-color: color.$white-color;
-      border-radius: 8px;
-      border: 1px solid color.$black-color;
-      display: flex;
-      align-items: center;
-      input {
-        width: 95%;
-        height: 30px;
-        font-size: 16px;
-        background: transparent;
-        border: none;
-        outline: none;
-        padding-inline-start: 14px;
       }
     }
   }

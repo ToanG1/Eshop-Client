@@ -9,9 +9,9 @@ import {
   faCartShopping,
 } from "@fortawesome/free-solid-svg-icons";
 
-import { login } from "../../api/auth";
-
 function Nav() {
+  const user = JSON.parse(localStorage.getItem("User_Info"));
+  console.log(user);
   return (
     <>
       <section className="Navigation-home">
@@ -41,9 +41,15 @@ function Nav() {
             style={{ paddingRight: "10px" }}
             size="lg"
           />
-          <button onClick={login}>Login</button>
-          <p>/</p>
-          <button>Register</button>
+          {user ? (
+            <p className="username">{user.name}</p>
+          ) : (
+            <>
+              <Link to={"/login"}>Login</Link>
+              <p>/</p>
+              <Link to={"/register"}>Register</Link>
+            </>
+          )}
         </div>
         <div id="search">
           <Link>

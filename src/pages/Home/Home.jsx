@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import style from "./Home.scss";
 import "slick-carousel/slick/slick.css";
@@ -12,6 +12,7 @@ import ProdBox from "../../components/ProdBox/ProdBox";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {} from "@fortawesome/free-regular-svg-icons";
 import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
+import { listProduct } from "../../api/user/Product";
 function Home() {
   let settings = {
     infinite: true,
@@ -38,11 +39,16 @@ function Home() {
     //   },
     // ],
   };
+  const [products, setProducts] = useState([]);
   useEffect(() => {
     const current_nav_item = document.getElementById("nav-home");
     current_nav_item.classList.add("active");
-  });
-
+    const fetchData = async () => {
+      let res = await listProduct();
+      setProducts(res.data.productDtoList);
+    };
+    fetchData();
+  }, []);
   return (
     <>
       <Nav />
@@ -92,16 +98,16 @@ function Home() {
           <h1>Arrival Products</h1>
           <div className="arrival-prod prod-slider">
             <Slider {...settings}>
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item) => (
-                <ProdBox key={item} />
+              {products.map((prod) => (
+                <ProdBox prod={prod} key={prod.id} />
               ))}
             </Slider>
           </div>
           <h1>Top Products</h1>
           <div className="top-prod prod-slider">
             <Slider {...settings}>
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item) => (
-                <ProdBox key={item} />
+              {products.map((prod) => (
+                <ProdBox prod={prod} key={prod.id} />
               ))}
             </Slider>
           </div>

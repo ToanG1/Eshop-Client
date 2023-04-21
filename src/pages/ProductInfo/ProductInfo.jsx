@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import style from "./ProductInfo.scss";
 import { Link, useParams } from "react-router-dom";
 
@@ -16,6 +16,9 @@ import MiniProdCard from "../../components/MiniProdCard/MiniProdCard";
 
 import shopAvatar from "../../images/shop-avatar.png";
 import prodImg from "../../images/prod-img.jpg";
+
+import { listProduct, findProdById } from "../../api/user/Product";
+import { findStoreById } from "../../api/user/Store";
 
 function ProductInfo() {
   const [quantity, setQuantity] = useState(1);
@@ -37,6 +40,44 @@ function ProductInfo() {
     slidesToScroll: 1,
     centerMode: true,
   };
+
+  const [products, setProducts] = useState([]);
+  const [prod, setProd] = useState({
+    listImages: [],
+    name: "",
+    price: "",
+    rating: "",
+    sales: "",
+    description: "",
+    id: "",
+    listTypes: [],
+    listStyle: [],
+    storeId: -1,
+  });
+  let res;
+  const [store, setStore] = useState({});
+  useEffect(() => {
+    const fetchProd = async () => {
+      res = await findProdById(id.id);
+      setProd(res.data);
+    };
+
+    fetchProd();
+  }, []);
+
+  useEffect(() => {
+    const fetchStore = async () => {
+      res = await findStoreById(prod.storeId);
+      setStore(res.data);
+    };
+    const fetchRelatedProd = async () => {
+      res = await listProduct();
+      setProducts(res.data.productDtoList);
+    };
+    fetchStore();
+    fetchRelatedProd();
+  }, [prod.storeId]);
+
   return (
     <>
       <Nav />
@@ -44,34 +85,31 @@ function ProductInfo() {
         <div className="main-info-container">
           <div className="product-img-slider">
             <Slider {...settings}>
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item) => (
-                <img src={prodImg} alt={item.toString()} />
+              {prod.listImages.map((image, index) => (
+                <img src={image} alt={index} />
               ))}
             </Slider>
           </div>
           <div className="product-info">
-            <div className="prod-name">
-              Super idol backpack vip pro plus max limited royal special
-            </div>
+            <div className="prod-name">{prod.name}</div>
             <div className="rating">
               <div className="rating-stars">
-                <FontAwesomeIcon icon={faStar} />
-                <FontAwesomeIcon icon={faStar} />
-                <FontAwesomeIcon icon={faStar} />
-                <FontAwesomeIcon icon={faStarEmpty} />
-                <FontAwesomeIcon icon={faStarEmpty} />
+                {[...Array(5)].map((star, i) => {
+                  if (i < prod.rating) return <FontAwesomeIcon icon={faStar} />;
+                  else return <FontAwesomeIcon icon={faStarEmpty} />;
+                })}
               </div>
               <div className="rating-count">500 Đánh giá</div>
-              <div className="sales">22.3k Đã bán</div>
+              <div className="sales">{prod.sales} Đã bán</div>
             </div>
             <div className="price-container">
               <div className="price">
-                <span className="og-price">500.000Đ</span>
-                <span>400.000Đ</span>
+                <span className="og-price">{prod.price} VND</span>
+                <span>{prod.price} VND</span>
               </div>
               <div className="sale-banner">Summer sale 2023</div>
             </div>
-            <StylesList />
+            <StylesList styles={prod.listStyle} />
             <div className="selection-container">
               <TypesList />
               <div className="quantity-container">
@@ -108,19 +146,11 @@ function ProductInfo() {
           <div className="left-container">
             <div className="shop-info">
               <div className="shop-name">
-                <img src={shopAvatar} alt="shop" />
-                <p className="shop-name-text">ZARA</p>
+                <img src={store.avatar} alt="shop" />
+                <p className="shop-name-text">{store.name}</p>
               </div>
             </div>
-            <div className="product-desciption">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </div>
+            <div className="product-desciption">{prod.description}</div>
           </div>
           <div className="right-container">
             <div className="comments-container">
@@ -132,8 +162,8 @@ function ProductInfo() {
       <div className="related-prod-section">
         <h2>Related Products</h2>
         <Slider {...settings4relatedPod}>
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item) => (
-            <MiniProdCard id={item} />
+          {products.map((prod) => (
+            <MiniProdCard prod={prod} key={prod.id} />
           ))}
         </Slider>
       </div>

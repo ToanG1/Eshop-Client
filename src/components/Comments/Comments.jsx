@@ -70,9 +70,6 @@ function Comments() {
               </div>
             ))}
           </div>
-          <div className="comment-form">
-            <input type="text" className="form-control" />
-          </div>
         </div>
       </section>
     </>

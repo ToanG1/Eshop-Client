@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import style from "./Explore.scss";
 import { Link } from "react-router-dom";
 import Nav from "../../components/Nav/Nav";
@@ -12,6 +12,7 @@ import { faCaretRight } from "@fortawesome/free-solid-svg-icons";
 
 import ShopCard from "../../components/ShopCard/ShopCard";
 import MiniProdCard from "../../components/MiniProdCard/MiniProdCard";
+import { listProduct } from "../../api/user/Product";
 function Explore() {
   let settings = {
     infinite: true,
@@ -21,10 +22,16 @@ function Explore() {
     slidesToScroll: 1,
     centerMode: true,
   };
+  const [products, setProducts] = useState([]);
   useEffect(() => {
-    const current_nav_item = document.getElementById("nav-explore");
+    const current_nav_item = document.getElementById("nav-home");
     current_nav_item.classList.add("active");
-  });
+    const fetchData = async () => {
+      let res = await listProduct();
+      setProducts(res.data.productDtoList);
+    };
+    fetchData();
+  }, []);
   return (
     <>
       <Nav />
@@ -76,8 +83,8 @@ function Explore() {
             Recommended Products <FontAwesomeIcon icon={faCaretRight} />
           </h2>
           <div className="prod-cards">
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item) => (
-              <MiniProdCard id={item} />
+            {products.map((prod) => (
+              <MiniProdCard prod={prod} key={prod.id} />
             ))}
           </div>
         </div>

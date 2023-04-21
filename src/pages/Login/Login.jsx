@@ -1,10 +1,30 @@
-import React, { useSate } from "react";
+import React, { useState } from "react";
 import style from "./Login.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import login_img from "../../images/login_img.png";
 import logo from "../../images/logo.png";
 
+import { login } from "../../api/auth";
+
 function Login() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
+
+  const loginHandler = (e) => {
+    e.preventDefault();
+    if (username !== "" && password !== "") {
+      const req = {
+        username: username,
+        password: password,
+      };
+      login(req).then(() => {
+        if (localStorage.getItem("User_Info")) navigate("/");
+        else alert("Tài sai mật khẩu hoặc tài khoản");
+      });
+    }
+  };
   return (
     <>
       <div className="home">
@@ -21,12 +41,16 @@ function Login() {
                   type={Text}
                   className="form-control"
                   id="email"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
                   aria-describedby="emailHelp"
-                  placeholder="Enter email"
+                  placeholder="Enter username"
                 />
                 <input
                   type="passwrod"
                   className="form-control"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   id="password"
                   placeholder="Enter passsword"
                 />
@@ -39,7 +63,11 @@ function Login() {
                   <a>Forgot password?</a>
                 </div>
                 <div id="login-btn">
-                  <button type="submit" className="btn btn-primary">
+                  <button
+                    onClick={loginHandler}
+                    type="submit"
+                    className="btn btn-primary"
+                  >
                     Sign in
                   </button>
                 </div>

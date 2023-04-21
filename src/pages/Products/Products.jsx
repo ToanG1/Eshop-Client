@@ -8,15 +8,18 @@ import MiniProdCard from "../../components/MiniProdCard/MiniProdCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilter, faCircle } from "@fortawesome/free-solid-svg-icons";
 
-import { listProduct } from "../../api/user/Product";
+import { listProduct, countProduct } from "../../api/user/Product";
 
 function Products() {
   const { category } = useParams();
   const [products, setProducts] = useState([]);
+  const [amount, setAmount] = useState(0);
   useEffect(() => {
     const fetchData = async () => {
-      let data = await listProduct();
-      setProducts(data);
+      let res = await listProduct();
+      setProducts(res.data.productDtoList);
+      // res = await countProduct();
+      // setAmount(data.data);
     };
     fetchData();
   }, []);
@@ -38,8 +41,8 @@ function Products() {
             </div>
           </div>
           <div className="prod-cards">
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item) => (
-              <MiniProdCard id={item} />
+            {products.map((prod) => (
+              <MiniProdCard prod={prod} />
             ))}
           </div>
         </div>
