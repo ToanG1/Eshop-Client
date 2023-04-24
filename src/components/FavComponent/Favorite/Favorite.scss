@@ -1,0 +1,19 @@
+@use "../../../common/color.scss" as color;
+
+.favorite-home {
+  width: 200px;
+  height: 235px;
+  .fav-top-block {
+    height: 25px;
+    text-align: center;
+    padding-top: 5px;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 10px 10px 0 0;
+  }
+  .fav-bottom-block {
+    height: 200px;
+    border-radius: 0 0 10px 10px;
+    overflow-y: scroll;
+  }
+}

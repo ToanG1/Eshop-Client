@@ -1,0 +1,36 @@
+@use "../../../common/color.scss" as color;
+
+.cart-box-home {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  .store-label {
+    width: calc(100% - 30px);
+    display: flex;
+    align-items: center;
+    padding: 10px 10px;
+    background-color: color.$light-gray-color;
+    border-radius: 10px;
+    input {
+      width: 30px;
+      height: 30px;
+    }
+    img {
+      width: 30px;
+      height: 30px;
+    }
+    span {
+      margin-left: 10px;
+      font-size: 20px;
+    }
+    button {
+      background-color: color.$primary-color;
+      padding: 6px 10px;
+      border: none;
+      border-radius: 5px;
+      color: color.$white-color;
+      font-size: 14px;
+      float: right;
+      margin-left: auto;
+    }
+  }
+}

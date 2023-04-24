@@ -24,7 +24,7 @@ function Explore() {
   };
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    const current_nav_item = document.getElementById("nav-home");
+    const current_nav_item = document.getElementById("nav-explore");
     current_nav_item.classList.add("active");
     const fetchData = async () => {
       let res = await listProduct();

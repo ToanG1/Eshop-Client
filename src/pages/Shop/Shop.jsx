@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import style from "./Shop.scss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,7 +10,19 @@ import Voucher from "../../components/Voucher/Voucher";
 import MiniProdCard from "../../components/MiniProdCard/MiniProdCard";
 import shopAvatar from "../../images/shop-avatar.png";
 
+import { listProduct } from "../../api/user/Product";
+
 function Shop() {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    const current_nav_item = document.getElementById("nav-home");
+    current_nav_item.classList.add("active");
+    const fetchData = async () => {
+      let res = await listProduct();
+      setProducts(res.data.productDtoList);
+    };
+    fetchData();
+  }, []);
   return (
     <>
       <Nav />
@@ -58,8 +70,8 @@ function Shop() {
         <div className="shop-prods-container">
           <h2>Shop products</h2>
           <div className="products-container">
-            {[...Array(20)].map((_, i) => (
-              <MiniProdCard key={i} />
+            {products.map((prod, i) => (
+              <MiniProdCard prod={prod} key={prod.id} />
             ))}
           </div>
         </div>

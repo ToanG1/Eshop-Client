@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./Nav.scss";
+
 import { Link } from "react-router-dom";
 import logo from "../../images/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,10 +9,12 @@ import {
   faMagnifyingGlass,
   faCartShopping,
 } from "@fortawesome/free-solid-svg-icons";
+import Popup from "reactjs-popup";
 
+import Favorite from "../FavComponent/Favorite/Favorite";
+import "reactjs-popup/dist/index.css";
 function Nav() {
   const user = JSON.parse(localStorage.getItem("User_Info"));
-  console.log(user);
   return (
     <>
       <section className="Navigation-home">
@@ -57,15 +60,18 @@ function Nav() {
           </Link>
         </div>
         <div id="cart">
-          <Link>
+          <Link to="/cart">
             <FontAwesomeIcon icon={faCartShopping} size="lg" />
           </Link>
           <p id="cart-count">0</p>
         </div>
         <div id="favo">
-          <Link>
-            <FontAwesomeIcon icon={faHeart} size="lg" />
-          </Link>
+          <Popup
+            trigger={<FontAwesomeIcon icon={faHeart} size="lg" />}
+            position={"bottom right"}
+          >
+            {(close) => <Favorite />}
+          </Popup>
           <p id="favo-items-count">0</p>
         </div>
       </section>

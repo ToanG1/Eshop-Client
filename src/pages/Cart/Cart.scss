@@ -1,0 +1,89 @@
+@use "../../common/color.scss" as color;
+@use "../../common/custom_box.scss" as custom_box;
+
+.cart-home {
+  margin: 50px;
+  margin-top: 150px;
+  display: flex;
+  .left-box {
+    width: 65%;
+    height: 600px;
+    .title {
+      display: flex;
+      align-items: center;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      & > * {
+        margin-right: 20px;
+      }
+      span {
+        color: color.$primary-color;
+        font-size: 18px;
+        text-transform: none;
+      }
+    }
+    .order-items {
+      width: fit-content;
+      height: 580px;
+      overflow-y: scroll;
+      margin: 20px;
+      margin-right: 10%;
+    }
+  }
+  .v-ruler {
+    width: 2px;
+    background-color: color.$light-gray-color;
+  }
+  .right-box {
+    width: calc(35% - 2px);
+    height: 600px;
+    margin: 20px;
+    margin-left: 5%;
+    h2 {
+      margin: 10px 0;
+    }
+    .top-block {
+      height: 40%;
+    }
+    .middle-block {
+      height: 10%;
+      .search-voucher {
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        input {
+          @include custom_box.roundedButtonBox(
+            $theme: color.$white-color,
+            $width-size: 240px,
+            $height-size: 35px
+          );
+          padding-inline-start: 12px;
+          border-color: color.$black-color;
+          color: color.$black-color;
+          margin-right: 10px;
+        }
+        input:focus {
+          outline: none;
+        }
+        button {
+          @include custom_box.roundedButtonBox(
+            $theme: color.$orange-color,
+            $width-size: 80px,
+            $height-size: 35px
+          );
+          border: 0;
+          color: color.$white-color;
+          font-weight: 700;
+        }
+      }
+    }
+    .bottom-block {
+      height: 40%;
+    }
+    .voucher-block {
+      overflow-y: scroll;
+      margin: 10px 0;
+    }
+  }
+}
