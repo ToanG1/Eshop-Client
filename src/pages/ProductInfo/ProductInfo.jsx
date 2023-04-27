@@ -4,8 +4,15 @@ import { Link, useParams } from "react-router-dom";
 
 import Slider from "react-slick";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar, faCartShopping } from "@fortawesome/free-solid-svg-icons";
-import { faStar as faStarEmpty } from "@fortawesome/free-regular-svg-icons";
+import {
+  faStar,
+  faCartShopping,
+  faHeart as faHeartFull,
+} from "@fortawesome/free-solid-svg-icons";
+import {
+  faStar as faStarEmpty,
+  faHeart,
+} from "@fortawesome/free-regular-svg-icons";
 
 import Nav from "../../components/Nav/Nav";
 import Footer from "../../components/Footer/Footer";
@@ -20,9 +27,11 @@ import prodImg from "../../images/prod-img.jpg";
 import { listProduct, findProdById } from "../../api/user/Product";
 import { findStoreById } from "../../api/user/Store";
 
+import { toggleFollowProduct } from "../../api/user/Follow/FollowProduct";
+import { addToCart } from "../../api/user/Cart";
 function ProductInfo() {
   const [quantity, setQuantity] = useState(1);
-  const id = useParams();
+  let id = useParams();
   let settings = {
     dots: true,
     infinite: true,
@@ -63,7 +72,7 @@ function ProductInfo() {
     };
 
     fetchProd();
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     const fetchStore = async () => {
@@ -76,7 +85,19 @@ function ProductInfo() {
     };
     fetchStore();
     fetchRelatedProd();
-  }, [prod.storeId]);
+  }, [prod]);
+
+  const [isFav, setIsFav] = useState(false);
+  function toggleFav() {
+    toggleFollowProduct(prod.id);
+    setIsFav(!isFav);
+  }
+
+  function addToCartHanlder() {
+    addToCart(prod.id);
+  }
+
+  console.log(id);
 
   return (
     <>
@@ -135,7 +156,14 @@ function ProductInfo() {
                     +
                   </button>
                 </div>
-                <button className="add-btn">
+                <div className="fav-btn" onClick={() => toggleFav()}>
+                  {isFav ? (
+                    <FontAwesomeIcon icon={faHeartFull} />
+                  ) : (
+                    <FontAwesomeIcon icon={faHeart} />
+                  )}
+                </div>
+                <button className="add-btn" onClick={() => addToCartHanlder()}>
                   <FontAwesomeIcon icon={faCartShopping} />
                 </button>
               </div>

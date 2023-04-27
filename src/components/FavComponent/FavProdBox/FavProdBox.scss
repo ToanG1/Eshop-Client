@@ -5,7 +5,7 @@
   height: 25%;
   background-color: color.$white-neutral;
   border-radius: 5px;
-  border: 0.5px solid color.$orange-color;
+  border: 0.5px solid color.$primary-color;
   margin: 10px;
   display: flex;
   img {
@@ -31,12 +31,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: color.$primary-color;
+    background-color: color.$orange-color;
   }
   button {
     width: 10%;
     border: none;
-    background-color: color.$orange-color;
+    background-color: color.$primary-color;
     border-radius: 0 5px 5px 0;
     color: color.$white-color;
   }

@@ -14,10 +14,13 @@
       & > * {
         margin-right: 20px;
       }
-      .add-address-btn {
-        color: color.$primary-color;
-        margin-left: 10px;
+      .add-address-btn-container {
+        .add-address-btn {
+          color: color.$primary-color;
+          margin-left: 10px;
+        }
       }
+
       span {
         color: color.$primary-color;
         font-size: 18px;
@@ -25,8 +28,8 @@
       }
     }
     .address-cards-list {
-      width: fit-content;
-      height: 430px;
+      width: 90%;
+      height: 450px;
       overflow-y: scroll;
       margin: 20px;
       margin-right: 10%;
@@ -40,8 +43,36 @@
     width: calc(50% - 2px);
     margin: 20px;
     margin-left: 5%;
+    .shipping-container {
+      h2 {
+        text-transform: uppercase;
+      }
+      .shipping-option-list {
+        margin: 20px 0;
+        padding: 20px;
+        background-color: color.$light-gray-color;
+        border-radius: 10px;
+        display: flex;
+        justify-content: space-between;
+        overflow-x: scroll;
+        .shipping-option {
+          height: 60px;
+          padding: 10px 10px;
+          border-radius: 5px;
+          background-color: color.$white-neutral;
+          border: 0.5px solid color.$gray-color;
+          display: flex;
+          align-items: center;
+          .shipping-option-name {
+            width: 100px;
+            font-size: 20px;
+            padding-inline-start: 10px;
+          }
+        }
+      }
+    }
     .price-detail-container {
-      height: 60%;
+      height: 55%;
       h2 {
         text-transform: uppercase;
       }
@@ -84,4 +115,8 @@
       }
     }
   }
+}
+
+.active-choice {
+  background-color: color.$light-green-color !important;
 }

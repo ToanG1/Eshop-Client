@@ -2,37 +2,36 @@ import React from "react";
 import style from "./OrderItemCard.scss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCircleCheck,
-  faXmarkCircle,
-} from "@fortawesome/free-regular-svg-icons";
+import { faCircleCheck } from "@fortawesome/free-regular-svg-icons";
 
 import prodImg from "../../../images/prod-img.jpg";
 
-function OrderItemCard() {
+function OrderItemCard({ cartItem }) {
+  const prod = cartItem.productDto;
+  let now = new Date();
+  now.setDate(now.getDate() + 7);
   return (
     <>
       <section className="order-item-card-home">
-        <img src={prodImg} alt="" />
+        <img
+          src={prod.listImages[0] !== undefined ? prod.listImages[0] : prodImg}
+          alt=""
+        />
         <div className="order-item-card-content">
-          <h1>Zara BackPack</h1>
-          <p>Supper BackPack</p>
+          <h1>{prod.name}</h1>
           <div className="qty-btn">
             <p>Size: S</p>
-            <p>Qty: 1</p>
+            <p>Qty: {cartItem.quantity}</p>
           </div>
           <div className="price-btn">
-            <p>890.000D</p>
-            <p>690.000D</p>
+            <p>{prod.price} VND</p>
+            <p>{prod.price} VND</p>
           </div>
           <div className="footer">
             <i>
               <FontAwesomeIcon icon={faCircleCheck} size="xm" />
             </i>
-            Delivery by 12 Jun 2023
-          </div>
-          <div className="delete-btn">
-            <FontAwesomeIcon icon={faXmarkCircle} size="xm" />
+            Deliveried by {now.toDateString()}
           </div>
         </div>
       </section>

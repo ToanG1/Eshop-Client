@@ -2,32 +2,77 @@ import React, { useState } from "react";
 import style from "./CartBox.scss";
 import CartItem from "../CartItem/CartItem";
 import img from "../../../images/prod-img.jpg";
-function CartBox({ cartbox, cart, setCart }) {
+function CartBox({
+  cartbox,
+  cartbox4Order,
+  removeCartBox,
+  removeCartItem,
+  addCartBoxToOrder,
+  addCartItemToOrder,
+  removeCartBoxFromOrder,
+  removeCartItemFromOrder,
+  updateCartItem,
+}) {
   const store = cartbox.store;
-  const [cartItems, setCartItems] = useState(cartbox.cartItemDtoList);
   const removeCartBoxHandler = () => {
-    setCart(cart.filter((box) => box.id !== cartbox.id));
+    removeCartBox(cartbox.id);
+  };
+  const removeCartItemHandler = (id) => {
+    removeCartItem(cartbox.id, id);
   };
 
-  const removeCartItem = (id) => {
-    setCartItems(cartItems.filter((cartitem) => cartitem.id !== id));
+  // crud cart item for order
+  const addCartBoxToOrderHandler = () => {
+    addCartBoxToOrder(cartbox);
+  };
+  const addCartItemToOrderHandler = (cartItem) => {
+    addCartItemToOrder(cartbox.id, cartItem);
+  };
+  const removeCartBoxFromOrderHandler = () => {
+    removeCartBoxFromOrder(cartbox.id);
+  };
+  const removeCartItemFromOrderHandler = (id) => {
+    removeCartItemFromOrder(cartbox.id, id);
+  };
+
+  const updateCartItemHandler = (id, quantity) => {
+    updateCartItem(cartbox.id, id, quantity);
   };
 
   return (
     <>
       <section className="cart-box-home">
-        {cartItems.length > 0 ? (
+        {cartbox.cartItemDtoList.length > 0 ? (
           <>
             <div className="store-label">
-              <input type="checkbox" />
-              <img src={store.avatar != null ? store.avatar : cartbox.img} />
+              <input
+                type="checkbox"
+                onChange={(e) =>
+                  e.target.checked
+                    ? addCartBoxToOrderHandler()
+                    : removeCartBoxFromOrderHandler()
+                }
+              />
+              <img src={store.avatar != null ? store.avatar : img} alt="" />
               <span>{store.name != null ? store.name : "store"}</span>
               <button onClick={() => removeCartBoxHandler()}>Remove</button>
             </div>
-            {cartItems.map((cartitem) => (
+            {cartbox.cartItemDtoList.map((cartitem) => (
               <CartItem
                 cartitem={cartitem}
-                removeCartItem={removeCartItem}
+                isChecked={
+                  cartbox4Order !== undefined
+                    ? cartbox4Order.cartItemDtoList.find(
+                        (item) => item.id === cartitem.id
+                      ) !== undefined
+                      ? true
+                      : false
+                    : false
+                }
+                removeCartItemHandler={removeCartItemHandler}
+                addCartItemToOrderHandler={addCartItemToOrderHandler}
+                removeCartItemFromOrderHandler={removeCartItemFromOrderHandler}
+                updateCartItemHandler={updateCartItemHandler}
                 key={cartitem.id}
               />
             ))}

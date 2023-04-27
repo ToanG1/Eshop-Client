@@ -6,16 +6,19 @@ import { faCartPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 import img from "../../../images/prod-img.jpg";
 
-function FavProdBox({ prod, removeFavorite }) {
+function FavProdBox({ prod, removeFavorite, addToCartHanlder }) {
   return (
     <>
       <section className="fav-prod-box">
-        <img src={prod.listImages[0]} alt="" />
+        <img
+          src={prod.listImages[0] !== undefined ? prod.listImages[0] : img}
+          alt=""
+        />
         <p>{prod.name}</p>
         <i onClick={() => removeFavorite(prod.id)}>
           <FontAwesomeIcon icon={faXmark} />
         </i>
-        <button>
+        <button onClick={() => addToCartHanlder(prod.id)}>
           <FontAwesomeIcon icon={faCartPlus} />{" "}
         </button>
       </section>

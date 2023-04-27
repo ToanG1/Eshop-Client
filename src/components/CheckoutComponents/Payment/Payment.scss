@@ -121,8 +121,28 @@
     width: calc(50% - 2px);
     margin: 20px;
     margin-left: 5%;
+    .note-container {
+      h2 {
+        text-transform: uppercase;
+      }
+      textarea {
+        margin: 10px 0 20px 0;
+        width: calc(100% - 20px);
+        height: 100px;
+        font-size: 18px;
+        resize: none;
+        border: 1px solid color.$gray-color;
+        border-radius: 10px;
+        padding: 10px;
+      }
+      textarea::placeholder {
+        font-size: 18px;
+        text-align: center;
+        padding: 40px;
+      }
+    }
     .price-detail-container {
-      height: 60%;
+      height: 50%;
       h2 {
         text-transform: uppercase;
       }

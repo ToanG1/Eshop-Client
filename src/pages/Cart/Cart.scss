@@ -7,7 +7,7 @@
   display: flex;
   .left-box {
     width: 65%;
-    height: 600px;
+    height: 550px;
     .title {
       display: flex;
       align-items: center;
@@ -24,7 +24,7 @@
     }
     .order-items {
       width: fit-content;
-      height: 580px;
+      height: 530px;
       overflow-y: scroll;
       margin: 20px;
       margin-right: 10%;
@@ -36,17 +36,18 @@
   }
   .right-box {
     width: calc(35% - 2px);
-    height: 600px;
+    height: 550px;
     margin: 20px;
     margin-left: 5%;
     h2 {
       margin: 10px 0;
     }
     .top-block {
-      height: 40%;
+      height: 68%;
     }
     .middle-block {
       height: 10%;
+
       .search-voucher {
         height: 100%;
         display: flex;
@@ -78,12 +79,18 @@
         }
       }
     }
-    .bottom-block {
-      height: 40%;
-    }
+
     .voucher-block {
       overflow-y: scroll;
       margin: 10px 0;
+    }
+    .order-summary-btn {
+      margin-top: 2%;
+      font-size: 18px !important;
+      @include custom_box.buttonBox($theme: color.$black-color);
+      i {
+        margin-left: 10px;
+      }
     }
   }
 }

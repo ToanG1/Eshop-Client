@@ -10,9 +10,9 @@ import {
   faCartShopping,
 } from "@fortawesome/free-solid-svg-icons";
 import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
 
 import Favorite from "../FavComponent/Favorite/Favorite";
-import "reactjs-popup/dist/index.css";
 function Nav() {
   const user = JSON.parse(localStorage.getItem("User_Info"));
   return (
